@@ -1,14 +1,14 @@
 
-#SSL that load  form doamin in nginx
+#SSL that load  form doamin in nginx 
 sudo nginx -T 2>/dev/null | grep -n -B5 -A15 'server_name cdn.samyarsafar.ir'
 
 #top rated path and endpoints
 awk -F'"' '{print $2}' access.log | awk '{print $2}' | cut -d'?' -f1 | sort | uniq -c | sort -nr | head -50
 
-# request for each  ip 
+# request for each  ip -- OK
 awk '{print $1}' access.log | sort | uniq -c | sort -nr
 
-# request for each  ip  in a date
+# request for each  ip  in a date 
 awk '$4 ~ /\[23\/Aug\/2026:23:/ {count[$1]++} END {for (ip in count) print ip, count[ip]}' access.log | sort -k2 -nr
 
 awk '$4 ~ /:(22|23):/ {count[$1]++} END {for (ip in count) print ip, count[ip]}' access.log | sort -k2 -nr
