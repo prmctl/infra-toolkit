@@ -63,4 +63,4 @@ END {
 
         printf "%s | TOTAL=%d | UNIQUE=%d\n",d,total[d],u
     }
-}' on.megagasht.com.access.log
+}' access-api.log
